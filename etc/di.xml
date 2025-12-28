@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="AumTechnolabs\AmastyURLAliasToSiteMap\Model\UrlBuilder">
+        <arguments>
+            <argument name="urlBuilder" xsi:type="string">Amasty\Shopby\Model\Layer\Filter\Item</argument>
+            <argument name="urlAdapters" xsi:type="array">
+                <item name="base" xsi:type="array">
+                    <item name="adapter" xsi:type="object">\Amasty\ShopbyBase\Model\UrlBuilder\Adapter</item>
+                    <item name="sort_order" xsi:type="string">100</item>
+                </item>
+                <item name="root" xsi:type="array">
+                    <item name="adapter" xsi:type="object">Amasty\Shopby\Model\UrlBuilder\Adapter</item>
+                    <item name="sort_order" xsi:type="string">20</item>
+                </item>
+                <item name="category" xsi:type="array">
+                    <item name="adapter" xsi:type="object">Amasty\Shopby\Model\UrlBuilder\CategoryAdapter</item>
+                    <item name="sort_order" xsi:type="string">50</item>
+                </item>
+                <item name="brand" xsi:type="array">
+                    <item name="adapter" xsi:type="object">Amasty\ShopbyBrand\Model\UrlBuilder\Adapter</item>
+                    <item name="sort_order" xsi:type="string">10</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Amasty\ShopbyBase\Model\UrlBuilder\UrlModifier">
+        <arguments>
+            <argument name="urlModifiers" xsi:type="array">
+                <item name="seo" xsi:type="object" sortOrder="10">Amasty\ShopbySeo\Model\UrlModifier</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- Default Code From Amasty Extension Guide -->
+    <type name="Amasty\XmlSitemap\Model\Sitemap\XmlGenerator">
+        <arguments>
+            <argument name="sources" xsi:type="array">
+                <item name="filter_item_urls" xsi:type="object">AumTechnolabs\AmastyURLAliasToSiteMap\Model\XmlSitemap\DataProvider</item>
+            </argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="filter_item_urls" xsi:type="array">
+                    <item name="wrapper" xsi:type="string">url</item>
+                    <item name="loc" xsi:type="string">loc</item>
+                    <item name="frequency" xsi:type="string">changefreq</item>
+                    <item name="priority" xsi:type="string">priority</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Amasty\XmlSitemap\Model\Sitemap">
+        <arguments>
+            <argument name="entities" xsi:type="array">
+                <item name="filter_item_urls" xsi:type="string">filter_item_urls</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Amasty\XmlSitemap\Model\Sitemap\SourceProvider">
+        <arguments>
+            <argument name="sources" xsi:type="array">
+                <item name="filter_item_urls" xsi:type="string">AumTechnolabs\AmastyURLAliasToSiteMap\Model\XmlSitemap\DataProvider</item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- Default Code From Amasty Extension Guide -->
+    <!-- <preference for="Amasty\XmlSitemap\Model\Cron\GenerateSitemap" type="AumTechnolabs\AmastyURLAliasToSiteMap\Model\Cron\GenerateSitemap"/> -->
+</config>
