@@ -1,0 +1,40 @@
+{
+  "name": "aumtechnolabs/magento2-amasty-xmlsitemap-addon-for-filter-item-url-aliases",
+  "description": "Magento 2 addon for Amasty XML Sitemap — include filter-item URLs when URL aliases exist (SEO enhancement)",
+  "type": "magento2-module",
+  "license": "GPL-3.0",
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "Aum Technolabs",
+      "homepage": "https://aumtechnolabs.com/",
+      "role": "Owner"
+    }
+  ],
+  "minimum-stability": "dev",
+  "keywords": [
+    "magento",
+    "magento2",
+    "amasty",
+    "xml sitemap",
+    "sitemap",
+    "seo",
+    "url alias",
+    "filter urls",
+    "sitemap addon"
+  ],
+  "require": {
+    "php": ">=7.4.0",
+    "magento/framework": "*",
+    "magento/product-community-edition": ">=2.4.0",
+    "amasty/module-xml-google-sitemap": ">=2.1.3"
+  },
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "AumTechnolabs\\AmastyURLAliasToSiteMap\\": ""
+    }
+  }
+}
